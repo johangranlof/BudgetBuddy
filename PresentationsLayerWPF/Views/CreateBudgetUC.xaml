@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="PresentationsLayerWPF.Views.CreateBudgetUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:PresentationsLayerWPF.ViewModels"
+             xmlns:local="clr-namespace:PresentationsLayerWPF.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="800" d:DesignWidth="1130" Foreground="White">
+
+    <UserControl.DataContext>
+        <vm:CreateBudgetViewModel/>
+    </UserControl.DataContext>
+
+    <Grid Margin="20">
+        <!-- Form StackPanel -->
+        <GroupBox Header="Create Budget" FontSize="22" Foreground="White" 
+                  Background="#393d4d" BorderBrush="#34475c" 
+                  BorderThickness="0.2" VerticalAlignment="Center" Width="500" Height="400">
+
+            <StackPanel Margin="20, 0, 20, 20" Grid.Column="0">
+                <!-- Budget Name -->
+                <StackPanel Margin="0,10,0,0">
+                    <TextBlock Text="Budget Name:" Foreground="White" Margin="0,0,0,5" FontSize="16"/>
+                    <TextBox Text="{Binding BudgetName, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="5"/>
+                </StackPanel>
+                
+                <!--Amount -->
+                <StackPanel Margin="0,10,0,0">
+                    <TextBlock Text="Amount:" Foreground="White" Margin="0,0,0,5" FontSize="16"/>
+                    <TextBox Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="5"/>
+                </StackPanel>
+                
+                <!-- Start Date -->
+                <StackPanel Margin="0,10,0,0">
+                    <TextBlock Text="Start Date:" Foreground="White" Margin="0,0,0,5" FontSize="16"/>
+                    <DatePicker SelectedDate="{Binding StartDate, Mode=TwoWay}" FontSize="16" Padding="5"/>
+                </StackPanel>
+
+                <!-- End Date -->
+                <StackPanel Margin="0,10,0,0">
+                    <TextBlock Text="End Date:" Foreground="White" Margin="0,0,0,5" FontSize="16"/>
+                    <DatePicker SelectedDate="{Binding EndDate, Mode=TwoWay}" FontSize="16" Padding="5"/>
+                </StackPanel>
+                
+                <!-- Save Button -->
+                <Button Command="{Binding SaveBudgetCommand}" Content="Save Budget" Width="120" Height="30" Margin="0,20,0,0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{StaticResource BlueButton}" Foreground="White"/>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</UserControl>
